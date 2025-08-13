@@ -1177,22 +1177,44 @@ To move the renders, adjust the percentage after "left" or "right" and "top". Yo
 
 To resize the renders, adjust the percentage after "width". 0% will remove the render.*/
 
-body footer:before {
-left: 3%;
-top: 15%;
-width: 20% !important;
-background-size: contain !important;
-background-image: url(https://i.imgur.com/XnJXNAI.png);
-background-position: left bottom !important;
-} 
-body footer:after {
-right: -3%;
+/*  Violet Evergarden:    https://files.catbox.moe/coa9lj.png
+    Hinata Hyuga: https://files.catbox.moe/5wta9c.png
+    Minakata Hizuru 01 (Summertime Render):  https://files.catbox.moe/9sumgl.png
+    Minakata Hizuru 02 (Summertime Render):  https://files.catbox.moe/df9k8o.png  
+*/
+    
+/* Minakata Hizuru 01 */
+/* body footer:before {
+left: 1%;
 top: 0%;
 width: 20% !important;
-background-size: contain !important;;
-background-image: url(https://i.imgur.com/oWgMD0p.png);
-background-position: right bottom !important;
+background-size: contain !important;
+background-image: url(https://files.catbox.moe/9sumgl.png);
+background-position: left bottom !important;
+}  */
+
+/* Violet Evergarden */
+body footer:before {
+left: 3.7%;
+top: 0%;
+width: 16% !important;
+background-size: contain !important;
+background-image: url(https://files.catbox.moe/coa9lj.png);
+background-position: left bottom !important;
+} 
+
+/*  Hinata Hyuga */
+body footer:after {
+  right: -3.3%;
+  top: 6%;
+  width: 26% !important;
+  background-size: contain !important;
+  background-image: url(https://files.catbox.moe/5wta9c.png);
+  background-position: right bottom !important;
+  transform: rotate(-13deg);
 }
+
+
 /*------------------------------*\
 | Character Renders R0.3         |
 \*------------------------------*/
@@ -1204,7 +1226,7 @@ footer:before, footer:after {
 	z-index: -1;
 	
 	width: calc(50% - 538px);
-	min-width: 262px;
+	min-width: 90px;
 	height: 100%;
 	background: transparent no-repeat center bottom / contain scroll;
 }
@@ -1230,7 +1252,7 @@ footer:before, footer:after {
   }
 
   html:has(.list-menu-float) .list-table > .list-item:nth-of-type(7n + 1) {
-    margin-right: 0 !important;
+    margin-right: 0 !important;re
   }
 }
 
