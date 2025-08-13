@@ -1,0 +1,1291 @@
+/* ==UserStyle==
+@name           frierenMal
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A new userstyle
+@author         Me
+==/UserStyle== */
+@-moz-document url("https://myanimelist.net/animelist/*") {
+    /* Insert code here... */
+}
+
+/*
+@\import "https://malscraper.azurewebsites.net/covers/anime/SPCTRE/presets/dataimagelink";
+@\import "https://malscraper.azurewebsites.net/covers/manga/SPCTRE/presets/dataimagelink";
+*/
+
+@\import "https://fonts.googleapis.com/css?family=Bellota+Text:wght@400;700&display=swap";
+@\import "https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap";
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(2em);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  border: unset !important;
+}
+
+*:not(i) {
+  font-family: "Bellota Text" !important;
+  line-height: 1.3 !important;
+}
+
+html {
+  height: 100vh;
+  --body-width: 1230px;
+  --gap: 1em;
+  --half-gap: 0.5em;
+  --white: #fff;
+  --grey: #6a6a6a;
+  --light-grey: #ddd;
+  --dark-grey: #444;
+  --primary: #2da4c2;
+  --primary-light: hsl(202, 80%, 70%);
+  --list-menu-bg: #101315;
+  --list-menu-bg-hover: rgba(29, 90, 136, 0.4);
+  --transition-timing: cubic-bezier(0.81, 0.22, 0.31, 0.8);
+}
+
+html:has(.list-menu-float) {
+  --list-menu-width: 70px;
+  --body-width: 1500px;
+}
+
+::-webkit-scrollbar {
+  background-color: var(--list-menu-bg);
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border: 2.5px solid var(--list-menu-bg);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-light);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(--list-menu-bg);
+}
+
+body.ownlist {
+  margin: auto !important;
+  background-color: transparent !important;
+  background: url("https://i.imgur.com/EvJAed4.jpeg") no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-position: calc(50% + var(--list-menu-width)) top !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--body-width);
+  position: relative;
+}
+
+html:not(:has(.list-menu-float)) body.ownlist {
+  background-position: center top !important;
+}
+
+.cover-block,
+.cover-block #cover-image-container,
+.status-menu,
+.list-table,
+.list-unit .list-status-title .text,
+.list-unit .list-stats,
+#footer-block {
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.list-container,
+.status-menu-container,
+.list-block,
+.list-unit,
+.list-unit .list-status-title {
+  width: 100% !important;
+}
+
+.status-menu-container {
+  padding: 0 2em !important;
+  position: sticky;
+  top: 0;
+}
+
+a,
+a:hover,
+.list-table .list-table-data .data a,
+.list-table .list-table-data .data a:hover {
+  color: var(--white) !important;
+}
+
+.list-table .list-table-data .data a:hover:not(.score a, .add-edit-more a) {
+  text-decoration: underline;
+}
+
+.list-menu-float {
+  top: 0 !important;
+  left: 0 !important;
+  width: auto !important;
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  z-index: 999 !important;
+  background: var(--list-menu-bg);
+}
+
+.list-menu-float .icon-menu {
+  background-color: transparent !important;
+  width: 70px !important;
+  height: 70px !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--half-gap);
+}
+
+.list-menu-float .icon-menu:hover,
+.anime .list-menu-float .icon-menu.anime-list,
+.manga .list-menu-float .icon-menu.manga-list {
+  background-color: var(--list-menu-bg-hover) !important;
+}
+
+.list-menu-float .icon-menu:not(.icon-menu.profile)::after {
+  font-size: 0.8em !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.list-menu-float .icon-menu:hover::after {
+  color: var(--primary-light);
+}
+
+.list-menu-float .icon-menu.quick-add::after {
+  content: "Add";
+}
+
+.list-menu-float .icon-menu.anime-list::after {
+  content: "Anime";
+}
+
+.list-menu-float .icon-menu.manga-list::after {
+  content: "Manga";
+}
+
+.list-menu-float .icon-menu.statistics::after {
+  content: "Stats";
+}
+
+.list-menu-float .icon-menu.history::after {
+  content: "History";
+}
+
+.list-menu-float .icon-menu.export::after {
+  content: "Export";
+}
+
+.list-menu-float .icon-menu.logout::after {
+  content: "Logout";
+}
+
+.list-menu-float .icon-menu.setting::after {
+  content: "Settings";
+}
+
+.list-menu-float .icon-menu .icon {
+  position: initial !important;
+  fill: var(--primary) !important;
+}
+
+.list-menu-float .icon-menu .text:not(.icon-menu.setting .text) {
+  display: none !important;
+}
+
+.list-menu-float .icon-menu.setting:hover {
+  cursor: pointer;
+}
+
+.list-menu-float .icon-menu.setting .text {
+  left: 70px !important;
+  padding: var(--half-gap) !important;
+  background-color: var(--white);
+  height: auto !important;
+  width: auto !important;
+  border-radius: 3px;
+  max-width: 0;
+  transition: max-width 0.4s !important;
+  text-align: left !important;
+  font-size: 1.3em;
+}
+
+.list-menu-float .icon-menu.setting:hover .text {
+  max-width: 300px !important;
+}
+
+.list-menu-float .icon-menu.setting:hover .text .link-list-setting,
+.list-menu-float .icon-menu.setting:hover .text .link-style-setting {
+  padding: var(--half-gap) var(--gap) !important;
+  position: initial !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: initial !important;
+  color: var(--list-menu-bg) !important;
+  background-color: unset !important;
+  font-weight: 500;
+}
+
+.list-menu-float .icon-menu.setting:hover .text .link-list-setting:hover,
+.list-menu-float .icon-menu.setting:hover .text .link-style-setting:hover {
+  background-color: #eaeaea !important;
+}
+
+.header {
+  display: flex !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(8px);
+  font-size: 0.9em !important;
+  height: initial !important;
+  padding: 0.5em 1.5em !important;
+  position: absolute !important;
+  top: calc(var(--gap) + 100px);
+  left: var(--gap);
+  width: auto;
+  border-radius: 50px;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+:has(.list-menu-float) .header {
+  left: calc((var(--gap) * 18) + var(--list-menu-width));
+}
+
+.header a:hover {
+  text-decoration: underline;
+}
+
+.header .header-title {
+  display: none !important;
+}
+
+.header .header-menu {
+  position: initial !important;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: var(--gap);
+}
+
+.header .header-menu *:not(.list-menu *) {
+  color: var(--white) !important;
+}
+
+.header .header-menu .btn-menu {
+  font-size: 1.6em !important;
+}
+
+.header .header-info {
+  font-size: 1.2em !important;
+}
+
+.header .header-info a {
+  font-weight: 400 !important;
+}
+
+.header .header-menu .list-menu {
+  left: 115px !important;
+  top: 30px !important;
+  right: unset !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.header .header-menu .list-menu .icon-menu {
+  width: auto !important;
+  display: flex !important;
+  align-items: center;
+  gap: var(--half-gap);
+  padding: 0.5em 1.5em !important;
+  font-size: 15px !important;
+}
+
+.header .header-menu .list-menu .icon-menu:hover {
+  background-color: var(--primary);
+}
+
+.header .header-menu .list-menu .icon-menu svg.icon {
+  position: initial !important;
+}
+
+.header .header-menu .list-menu .text {
+  position: initial !important;
+}
+
+#list-container,
+#footer-block {
+  background-color: transparent !important;
+}
+
+.list-container {
+  border: none !important;
+  padding-left: var(--list-menu-width) !important;
+/* ZOOM IN KONTEN     */
+ transform: scale(0.7);
+  transform-origin: center top;
+}
+
+.cover-block {
+  margin: 0 auto !important;
+}
+
+.cover-block #cover-image-container {
+  display: flex;
+}
+
+.cover-block #cover-image-container:hover .btn-list-setting {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cover-block #cover-image-container .btn-list-setting {
+  padding: 0.5em 1.5em !important;
+  border-radius: 50px;
+  top: calc(var(--gap) * 2) !important;
+  right: calc(var(--gap) * 2) !important;
+}
+
+.cover-block #cover-image-container .btn-list-setting:hover {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.cover-block #cover-image-container .btn-list-setting .fa-camera:before {
+  content: "\f03e" !important;
+}
+
+.cover-block #cover-image-container .btn-list-setting .fa-camera {
+  order: 0;
+}
+
+.cover-block #cover-image-container .btn-list-setting .icon-plus-circle:before {
+  content: "\2b" !important;
+}
+
+.cover-block #cover-image-container .btn-list-setting .icon-plus-circle {
+  position: initial !important;
+  top: unset !important;
+  left: unset !important;
+  order: 1;
+  background-color: unset !important;
+  border-radius: unset !important;
+  box-shadow: unset !important;
+}
+
+.cover-block #cover-image-container .btn-list-setting {
+  text-shadow: -1px 0px 2px rgba(0, 0, 0, 0.5), 1px 0px 2px rgba(0, 0, 0, 0.5),
+    0px -1px 2px rgba(0, 0, 0, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cover-block #cover-image-container .btn-list-setting .text {
+  order: 2;
+  margin-left: 4px !important;
+}
+
+.cover-block #cover-image-container img {
+  max-width: 100% !important;
+  min-width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.cover-block #cover-image-container img[src*="spacer.gif"] {
+	display: none !important;
+}
+
+.status-menu-container {
+  height: 128px !important;
+  padding: 0 2em !important;
+  display: flex;
+  align-items: center;
+  border: none !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(8px);
+  z-index: 99;
+  max-width: calc(var(--body-width) - var(--list-menu-width));
+  border-radius: 0 0 50px 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+html:not(:has(.list-menu-float)) .status-menu-container {
+  max-width: var(--body-width);
+}
+
+.status-menu-container.fixed {
+  display: flex !important;
+  position: sticky !important;
+  width: 100%;
+}
+
+.status-menu-container .status-menu {
+  margin: auto !important;
+  display: flex !important;
+  justify-content: center;
+  border-collapse: initial !important;
+  height: 100%;
+  gap: calc(var(--gap) * 2);
+}
+
+.status-menu-container .status-menu .status-button {
+  color: var(--grey) !important;
+  font-weight: 300 !important;
+  padding: var(--half-gap) 0 !important;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: var(--gap) !important;
+}
+
+.status-menu-container .status-menu .status-button:after {
+  background-color: var(--primary) !important;
+}
+
+.status-menu-container .status-menu .status-button.on {
+  font-weight: 700 !important;
+  color: var(--primary) !important;
+}
+
+.search-container {
+  right: 2em !important;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+#search-box {
+  height: 30px !important;
+  margin-right: var(--half-gap) !important;
+}
+
+#search-box.open {
+  width: 150px !important;
+}
+
+#search-box input {
+  padding: var(--half-gap) !important;
+  outline: unset;
+  border-radius: 3px;
+}
+
+#search-button {
+  color: var(--grey) !important;
+  height: auto !important;
+}
+
+#search-button:hover {
+  color: var(--primary) !important;
+}
+
+.list-block {
+  margin-top: 0 !important;
+}
+
+.list-unit .list-status-title {
+  background: none !important;
+  height: 250px !important;
+  position: relative;
+  margin: auto !important;
+  display: flex !important;
+  flex-direction: column;
+}
+
+.list-unit .list-status-title .text {
+  text-align: left !important;
+  margin: auto !important;
+  position: relative !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 200 !important;
+  font-size: 52px !important;
+  letter-spacing: 0.05em;
+  font-family: "Annie Use Your Telescope" !important;
+  text-transform: lowercase;
+  color: var(--white) !important;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+.list-unit .list-status-title .text:after {
+  content: "";
+  display: block;
+  color: var(--white);
+  font-size: 0.4em;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+.manga .list-unit.all_anime .list-status-title .text:after {
+  content: "全ての漫画";
+}
+
+.list-unit.all_anime .list-status-title .text:after {
+  content: "全てのアニメ";
+}
+
+.list-unit.watching .list-status-title .text:after {
+  content: "今見ている";
+}
+
+.list-unit.completed .list-status-title .text:after {
+  content: "見終わった";
+}
+
+.list-unit.onhold .list-status-title .text:after {
+  content: "保留中ま";
+}
+
+.list-unit.dropped .list-status-title .text:after {
+  content: "脱落した";
+}
+
+.list-unit.plantowatch .list-status-title .text:after {
+  content: "見る予定";
+}
+
+.list-unit.reading .list-status-title .text:after {
+  content: "今読んでいる";
+}
+
+.list-unit.plantoread .list-status-title .text:after {
+  content: "読む予定";
+}
+
+.list-unit .list-status-title .stats {
+  position: initial !important;
+  display: none !important;
+}
+
+.list-table {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  border: unset !important;
+    
+}
+
+.list-table > tbody:first-of-type {
+  position: absolute;
+  top: calc(-250px / 2 - 22px);
+  /* .list-status-title height - SORT BY height */
+  right: 0;
+  background-color: var(--white) !important;
+  z-index: 3;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-height: 44px;
+  transition: max-height 0.25s var(--transition-timing);
+}
+
+.list-table > tbody:first-of-type:hover {
+  max-height: 800px;
+    
+}
+
+.list-table > tbody:first-of-type:hover .list-table-header .header-title {
+  transform: scaleY(1);
+    
+}
+
+.list-table .list-table-header {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.list-table .list-table-header:before {
+  content: "SORT BY";
+  font-weight: 700 !important;
+  margin: 0 auto;
+}
+
+.list-table .list-table-header:before,
+.list-table .list-table-header .header-title > .link.sort {
+  color: var(--grey) !important;
+  padding: 0.75em 1.5em !important;
+  font-size: 16px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--half-gap);
+}
+
+.list-table .list-table-header .header-title > a {
+  font-weight: 400 !important;
+}
+
+.list-table .list-table-header .header-title > a:hover {
+  background-color: var(--light-grey) !important;
+}
+
+.list-table .list-table-header .header-title {
+  width: 100% !important;
+  text-align: left !important;
+  border-bottom: none !important;
+  background: none !important;
+  height: auto !important;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.25s var(--transition-timing);
+}
+
+.list-table .list-table-header .header-title .sort-icon {
+  color: var(--grey) !important;
+}
+
+.list-table .list-table-header .header-title.status,
+.list-table .list-table-header .header-title.number,
+.list-table .list-table-header .header-title.image,
+.list-table .list-table-header .header-title.days,
+.list-table .list-table-header .header-title.started,
+.list-table .list-table-header .header-title.genre,
+.list-table .list-table-header .header-title.tags,
+.list-table .list-table-header .header-title.demographic,
+.list-table .list-table-header .header-title.studio,
+.list-table .list-table-header .header-title.licensor,
+.list-table .list-table-header .header-title.magazine,
+.list-table .list-table-header .header-title.retail {
+  display: none !important;
+}
+
+/* Ubah width untuk ubah ukuran item, ubah juga logika margin per perangkat */
+.list-item {
+  width: 170px;
+/*   height: 320px; */
+    aspect-ratio: 45 / 64;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: var(--gap) !important;
+  margin-bottom: var(--gap) !important;
+  border-radius: 6px;
+  overflow: hidden;
+  animation: fadeIn 2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.list-item:nth-of-type(8n + 1),
+.list-item:last-of-type {
+  margin-right: 0 !important;
+}
+
+.list-item .list-table-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;       
+    
+}
+
+.list-table .list-table-data .data {
+  border-bottom: unset !important;
+  font-size: 13px !important;
+  color: var(--white) !important;
+    
+}
+/* List Table data, ubah opacity untuk menyembunyikan title dan data lainya di list anime */
+.list-table .list-table-data .data:not(.image) {
+  opacity: 1;
+  z-index: 1;
+  text-shadow: 0 0px 5px #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0 var(--gap) !important;
+}
+
+
+.list-table .list-table-data .data.status,
+.icon-watch,
+.icon-watch2,
+.icon-watch-pv {
+  display: none !important;
+}
+
+.list-table .list-table-data .data.number,
+.list-table .list-table-data .data.image,
+.list-table .list-table-data .data.score,
+.list-table .list-table-data .data.type,
+.list-table .list-table-data .data.progress,
+.list-table .list-table-data .data.episodes,
+.list-table .list-table-data .data.chapter,
+.list-table .list-table-data .data.volume {
+  position: absolute;
+  padding: 0 !important;
+    
+}
+
+.list-table .list-table-data .data.number {
+  left: var(--gap);
+  top: var(--gap);
+}
+
+.list-table .list-table-data .data.number:before {
+  content: "#";
+  font-family: var(--fa-style-family-classic);
+  margin-right: 4px;
+  font-size: 0.9em;
+}
+
+.list-table .list-table-data .data.image img {
+ width: 100%!important;
+  height: 100%!important;
+}
+ 
+
+.list-table .list-table-data .data.image,
+.list-table .list-table-data .data.image .link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.list-table .list-table-data .data.image .link {
+  background-size: cover;
+  background-position: center;
+}
+
+/* Ubah background linier gradient untuk mengatur overly list item data agar terlihat hurufnya */
+.list-table .list-table-data .data.image:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, .34) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.list-table .list-item:hover .data.image:before,
+.list-table .list-item:hover .data:not(.image) {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.list-table .list-table-data .data.image,
+.list-table .list-table-data .data.image a,
+.list-table .list-table-data .data.image img.hover-info.image {
+  border: unset !important;
+}
+
+.list-table .list-table-data .data.title {
+  display: flex;
+  flex-direction: column;
+  text-align: center !important;
+  padding: 0 var(--gap) !important;
+}
+
+.list-table .list-table-data .data.title .link {
+  font-weight: 400 !important;
+}
+
+.list-table .list-table-data .data.title .add-edit-more {
+  color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0;
+  margin: 16px 0 !important;
+}
+
+.list-table .list-table-data:hover .data.title .add-edit-more .edit a:before {
+  font-family: var(--fa-style-family-classic);
+  content: "\f303";
+  font-size: 24px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.list-table .list-table-data:hover .data.title .add-edit-more .add a:before {
+  font-family: var(--fa-style-family-classic);
+  content: "\2b";
+  font-size: 24px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.list-table .list-table-data .data.title .add-edit-more .more {
+  display: none;
+}
+
+.list-table .list-table-data .data.title .add-edit-more a:hover {
+  color: var(--primary) !important;
+}
+
+.list-table .list-table-data .notes {
+  width: unset !important;
+  margin: 0 auto !important;
+}
+
+.list-table .list-table-data .notes .edit {
+  cursor: pointer;
+  color: var(--white) !important;
+  background-color: var(--primary);
+  border-radius: 3px;
+  display: block;
+  padding: 2px 4px !important;
+  font-size: 11px !important;
+}
+
+.list-table .list-table-data .tags .edit {
+  color: var(--white) !important;
+  background-color: var(--primary);
+  border-radius: 3px;
+  display: flex;
+  padding: 2px 4px !important;
+  margin: 0 auto !important;
+  font-size: 0 !important;
+}
+
+.list-table .list-table-data .tags .edit:before {
+  content: "Edit tags";
+  font-size: 11px !important;
+}
+
+.list-table .list-table-data .notes .edit:hover,
+.list-table .list-table-data .tags .edit:hover {
+  background-color: var(--primary-light);
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.list-table .list-table-data .data.title .rewatching,
+.list-table .list-table-data .data.title .rereading,
+.list-table .list-table-data .data.title .content-status {
+  font-size: 0.8em !important;
+  color: var(--light-grey);
+}
+
+.list-table .list-table-data .data.score {
+  left: var(--gap);
+  bottom: var(--gap);
+}
+
+.list-table .list-table-data .data.score a:hover {
+  color: var(--primary) !important;
+}
+
+.list-table .list-table-data .data.score .score-label {
+  font-size: 1.5em;
+}
+
+.list-table .list-table-data .data.score select {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: var(--gap);
+}
+
+.list-table .list-table-data .data.type {
+  right: var(--gap);
+  top: var(--gap);
+}
+
+.list-table .list-table-data .data.progress,
+.list-table .list-table-data .data.volume {
+  right: var(--gap);
+  bottom: var(--gap);
+}
+
+.list-table .list-table-data .data.progress input,
+.list-table .list-table-data .data.chapter input,
+.list-table .list-table-data .data.volume input {
+  font-size: var(--gap);
+  padding: 2px 4px !important;
+  width: 0 !important;
+  text-align: center;
+}
+
+.list-table .list-table-data .data.progress input:focus,
+.list-table .list-table-data .data.chapter input:focus,
+.list-table .list-table-data .data.volume input:focus {
+  animation: width 0.2s;
+  width: 40px !important;
+}
+
+.list-table .list-table-data .data.progress .icon-add-episode:hover,
+.list-table .list-table-data .data.chapter .icon-add-chapter:hover,
+.list-table .list-table-data .data.volume .icon-add-volume:hover {
+  color: var(--primary) !important;
+}
+
+.list-table .list-table-data .data.chapter {
+  right: var(--gap);
+  bottom: calc(var(--gap) * 2 + (var(--gap) / 2));
+}
+
+.list-table .list-table-data .data.progress .link,
+.list-table .list-table-data .data.volume .link,
+.list-table .list-table-data .data.chapter .link {
+  font-size: 1.6em;
+}
+
+.loading-space {
+  height: 70px !important;
+  font-size: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-space #loading-spinner:after {
+  content: "\f890";
+  font-family: var(--fa-style-family-sharp);
+  font-weight: 400;
+  font-size: 40px;
+  color: var(--white);
+  text-shadow: 0 0 10px var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+footer {
+  margin-top: var(--gap) !important;
+  margin-left: var(--list-menu-width) !important;
+}
+
+html:not(:has(.list-menu-float)) footer {
+  margin-left: unset !important;
+}
+
+#footer-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px !important;
+  text-shadow: 0 0 3px #000;
+}
+
+#footer-block:after {
+  content: "List design by SPCTRE";
+  margin-top: 4px;
+  font-weight: 700;
+  font-size: 1.4em !important;
+  display: block;
+  font-size: 1var (--gap);
+}
+
+#copyright {
+  font-size: 14px !important;
+  color: var(--white) !important;
+}
+
+#recaptcha-terms {
+  display: none;
+}
+
+.mal-modal .mal-modal-dialog {
+  margin: 8em auto 0 !important;
+  font-size: 1.2em !important;
+}
+
+.mal-modal .mal-modal-dialog .mal-modal-content .mal-modal-header .row,
+.mal-modal .mal-modal-dialog .mal-modal-content .mal-modal-body > div,
+.mal-modal
+  .mal-modal-dialog
+  .mal-modal-content
+  .mal-modal-body
+  .modal-vote-score
+  li
+  a {
+  padding: var(--gap) !important;
+}
+
+.mal-modal .mal-modal-dialog .mal-modal-content .mal-modal-header .row .title {
+  font-size: 1.2em !important;
+}
+
+.mal-modal
+  .mal-modal-dialog
+  .mal-modal-content
+  .mal-modal-body
+  .modal-vote-score
+  li
+  a {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.mal-modal
+  .mal-modal-dialog
+  .mal-modal-content
+  .mal-modal-body
+  .modal-vote-score
+  li
+  a:hover {
+  background-color: var(--primary) !important;
+}
+
+.mal-modal
+  .mal-modal-dialog
+  .mal-modal-content
+  .mal-modal-body
+  .modal-vote-score
+  li
+  a
+  .mr8 {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.mal-modal
+  .mal-modal-dialog
+  .mal-modal-content
+  .mal-modal-body
+  .modal-vote-score-footer
+  a:hover {
+  background-color: inherit !important;
+  text-decoration: underline !important;
+}
+
+#fancybox-wrap {
+  left: 50% !important;
+  transform: translateX(-50%);
+}
+
+#fancybox-outer {
+  padding: var(--gap) !important;
+  min-height: 100px !important;
+  align-items: center;
+  justify-content: center;
+}
+
+#fancybox-inner {
+  position: unset !important;
+  height: 100% !important;
+  width: 100% !important;
+  overflow: unset !important;
+}
+
+#fancybox-inner > div[style*="width: 300px"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em !important;
+  gap: var(--half-gap);
+}
+
+#fancybox-inner div[style*="margin-top: 5px"] {
+  font-size: 0 !important;
+}
+
+#fancybox-confirm-yes-button {
+  margin-bottom: var(--half-gap) !important;
+}
+
+#fancybox-confirm-yes-button,
+#fancybox-confirm-no-button {
+  font-size: 14px !important;
+  border-radius: 3px;
+  width: 100%;
+  padding: var(--half-gap) !important;
+}
+
+#fancybox-confirm-yes-button:hover,
+#fancybox-confirm-no-button:hover {
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+  cursor: pointer;
+}
+
+#gdpr-modal-bottom .modal-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#gdpr-modal-bottom .modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+}
+
+#gdpr-modal-bottom .button-wrapper:active {
+  background-color: transparent !important;
+}
+
+#gdpr-modal-bottom .button-wrapper button {
+  margin-bottom: var(--gap) !important;
+  border-radius: 3px !important;
+  font-weight: normal !important;
+  transition: opacity 0.2s;
+}
+
+#gdpr-modal-bottom .button-wrapper button:hover {
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+#gdpr-modal-bottom .button-wrapper a,
+#gdpr-modal-bottom .text a {
+  font-weight: normal !important;
+}
+
+#gdpr-modal-bottom .button-wrapper a:hover,
+#gdpr-modal-bottom .text a:hover {
+  text-decoration: underline;
+}
+
+#gdpr-modal-bottom .text {
+  font-size: 1.2em !important;
+}
+
+#gdpr-modal-bottom .text p:first-of-type {
+  margin-bottom: var(--half-gap) !important;
+}
+
+
+
+
+/*SIDE RENDERS (left and right)
+To move the renders, adjust the percentage after "left" or "right" and "top". You can use negatives. The percentage is the distance from the left, top, or right. 
+
+To resize the renders, adjust the percentage after "width". 0% will remove the render.*/
+
+body footer:before {
+left: 3%;
+top: 15%;
+width: 20% !important;
+background-size: contain !important;
+background-image: url(https://i.imgur.com/XnJXNAI.png);
+background-position: left bottom !important;
+} 
+body footer:after {
+right: -3%;
+top: 0%;
+width: 20% !important;
+background-size: contain !important;;
+background-image: url(https://i.imgur.com/oWgMD0p.png);
+background-position: right bottom !important;
+}
+/*------------------------------*\
+| Character Renders R0.3         |
+\*------------------------------*/
+
+footer:before, footer:after {
+	content: "";
+	position: fixed;
+	top: 0;
+	z-index: -1;
+	
+	width: calc(50% - 538px);
+	min-width: 262px;
+	height: 100%;
+	background: transparent no-repeat center bottom / contain scroll;
+}
+
+
+
+
+@media (max-width: 128px) {
+  img:not([width="128px"]) {
+    border-radius: 50px;
+  }
+}
+
+@media all and (max-width: 1525px) {
+  html:has(.list-menu-float) body.ownlist {
+    width: calc(100% - (var(--gap) * 2));
+  }
+}
+
+@media all and (max-width: 1503px) {
+  html:has(.list-menu-float) .list-table > .list-item:nth-of-type(8n + 1) {
+    margin-right: var(--gap) !important;
+  }
+
+  html:has(.list-menu-float) .list-table > .list-item:nth-of-type(7n + 1) {
+    margin-right: 0 !important;
+  }
+}
+
+@media all and (max-width: 1267px) {
+  html:has(.list-menu-float) .list-table > .list-item:nth-of-type(7n + 1) {
+    margin-right: var(--gap) !important;
+  }
+
+  html:has(.list-menu-float) .list-table > .list-item:nth-of-type(6n + 1) {
+    margin-right: 0 !important;
+  }
+}
+
+@media all and (max-width: 1031px) {
+  html:has(.list-menu-float) .list-table > .list-item:nth-of-type(6n + 1) {
+    margin-right: var(--gap) !important;
+  }
+
+  html:has(.list-menu-float) .list-table > .list-item:nth-of-type(3n + 1) {
+    margin-right: 0 !important;
+  }
+}
+
+@media all and (max-width: 1460px) {
+  body.ownlist {
+    width: calc(100% - (var(--gap) * 2));
+  }
+
+  @media all and (max-width: 1433px) {
+    .list-table > .list-item:nth-of-type(8n + 1) {
+      margin-right: var(--gap) !important;
+    }
+
+    .list-table > .list-item:nth-of-type(7n + 1) {
+      margin-right: 0 !important;
+    }
+  }
+
+  @media all and (max-width: 1197px) {
+    .list-table > .list-item:nth-of-type(7n + 1) {
+      margin-right: var(--gap) !important;
+    }
+
+    .list-table > .list-item:nth-of-type(6n + 1) {
+      margin-right: 0 !important;
+    }
+  }
+
+  @media all and (max-width: 961px) {
+    .list-table > .list-item:nth-of-type(6n + 1) {
+      margin-right: var(--gap) !important;
+    }
+
+    .list-table > .list-item:nth-of-type(5n + 1) {
+      margin-right: 0 !important;
+    }
+  }
+}
