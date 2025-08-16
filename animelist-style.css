@@ -80,10 +80,11 @@ html:has(.list-menu-float) {
   background-color: var(--list-menu-bg);
 }
 
+/* Background back */
 body.ownlist {
   margin: auto !important;
   background-color: transparent !important;
-  background: url("https://i.imgur.com/EvJAed4.jpeg") no-repeat !important;
+  background: url(https://files.catbox.moe/1y3p9x.jpg) no-repeat !important;
   background-size: cover !important;
   background-attachment: fixed !important;
   background-position: calc(50% + var(--list-menu-width)) top !important;
