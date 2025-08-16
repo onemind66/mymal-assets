@@ -1195,23 +1195,26 @@ background-position: left bottom !important;
 
 /* Violet Evergarden */
 body footer:before {
-left: 3.7%;
+left: var(--list-menu-width);
 top: 0%;
-width: 16% !important;
+width: 15.6% !important;
 background-size: contain !important;
 background-image: url(https://files.catbox.moe/coa9lj.png);
 background-position: left bottom !important;
+transform: translateX(-3%);
 } 
 
 /*  Hinata Hyuga */
 body footer:after {
-  right: -3.3%;
-  top: 6%;
-  width: 26% !important;
+  right: 0;
+  top: 6px;
+  width: 23% !important;
   background-size: contain !important;
   background-image: url(https://files.catbox.moe/5wta9c.png);
   background-position: right bottom !important;
-  transform: rotate(-13deg);
+  transform: translateX(14%);
+  
+
 }
 
 
@@ -1223,7 +1226,7 @@ footer:before, footer:after {
 	content: "";
 	position: fixed;
 	top: 0;
-	z-index: -1;
+	z-index: 1;
 	
 	width: calc(50% - 538px);
 	min-width: 90px;
@@ -1240,19 +1243,21 @@ footer:before, footer:after {
   }
 }
 
+/* HP Landscape */
 @media all and (max-width: 1525px) {
   html:has(.list-menu-float) body.ownlist {
     width: calc(100% - (var(--gap) * 2));
   }
 }
 
+/* Laptop */
 @media all and (max-width: 1503px) {
   html:has(.list-menu-float) .list-table > .list-item:nth-of-type(8n + 1) {
     margin-right: var(--gap) !important;
   }
 
   html:has(.list-menu-float) .list-table > .list-item:nth-of-type(7n + 1) {
-    margin-right: 0 !important;re
+    margin-right: 0 !important;
   }
 }
 
@@ -1266,8 +1271,9 @@ footer:before, footer:after {
   }
 }
 
+/* HP */
 @media all and (max-width: 1031px) {
-  html:has(.list-menu-float) .list-table > .list-item:nth-of-type(6n + 1) {
+  html:has(.list-menu-float) .list-table > .list-item:nth-of-type(4n + 1) {
     margin-right: var(--gap) !important;
   }
 
@@ -1306,7 +1312,7 @@ footer:before, footer:after {
       margin-right: var(--gap) !important;
     }
 
-    .list-table > .list-item:nth-of-type(5n + 1) {
+    .list-table > .list-item:nth-of-type(3n + 1) {
       margin-right: 0 !important;
     }
   }
